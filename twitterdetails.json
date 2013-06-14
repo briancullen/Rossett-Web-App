@@ -1,0 +1,34 @@
+{
+    "school": {
+        "displayName": "Rossett School",
+        "twitterId": "rossett"
+    },
+    "groups": [
+        {
+            "groupName": "Departments",
+            "members": [
+                {
+                    "displayName": "ICT & Computing",
+                    "twitterId": "ictrossett"
+                },
+                {
+                    "displayName": "Music",
+                    "twitterId": "rossettmusic"
+                }
+            ]
+        },
+        {
+            "groupName": "Staff",
+            "members": [
+                {
+                    "displayName": "Mr B Cullen",
+                    "twitterId": "mrbcullen"
+                },
+                {
+                    "displayName": "Mr P McIntosh",
+                    "twitterId": "pauldavidmac"
+                }
+            ]
+        }
+    ]
+}

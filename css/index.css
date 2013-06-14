@@ -1,0 +1,249 @@
+﻿/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* 
+{
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+    font-size:12px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    text-transform:uppercase;
+    width:100%;
+}
+
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+#tiltshadows { width: 75%; margin: 1em auto; position: relative;  z-index: 3;  text-align: center; }
+
+@media screen and (min-width: 40em) {
+	#titleshadows { display: inline-block; width: 20em; background-colour: yellow; }
+}
+		
+article { background: #749194;  -webkit-border-radius: 20px;  -moz-border-radius: 20px;  border-radius: 20px;  padding: 10px; color: #695539;  text-shadow: 0 1px 0 #ffffff;
+			line-height: 1.7em;  text-align: center;  display: block; }
+			
+article.newMessage { background: #000000; }
+
+article:before, article:after { -webkit-box-shadow: 0 15px 10px rgba(0,0,0, 0.7);  -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);	
+			position: absolute;  bottom: 15px;  z-index: -1;  width: 50%;  height: 20%;  content: "";  background: rgba(0, 0, 0, 0.7); }
+		   
+article:after { -webkit-transform: rotate(3deg);  -moz-transform: rotate(3deg);   -o-transform: rotate(3deg);  right: 10px;  left: auto; }
+		
+article:before { -webkit-transform: rotate(-3deg);   -moz-transform: rotate(-3deg);  -o-transform: rotate(-3deg);  right: auto;  left: 10px; }
+
+a.mainMenuButton {
+	display: block;
+	width: 80px;
+	text-decoration:none;
+	text-align:center;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 2px;
+	margin: 5px auto;
+	background-color:lavender;
+}
+
+a.mainMenuButton:active {
+	background-color: gray;
+}
+
+a.mainMenuButton img {
+	width: 60px;
+	height: 60px;
+	margin: 0px;
+}
+
+a.mainMenuButton p {
+	margin: 0px;
+	color: black;
+}
+
+.ui-page {
+	background-image: linear-gradient(bottom, #FFFFFF 2%, #64ADDA 51%);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 2%, #64ADDA 51%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 2%, #64ADDA 51%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 2%, #64ADDA 51%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 2%, #64ADDA 51%);
+	
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.02, #FFFFFF),
+		color-stop(0.51, #64ADDA)
+	);
+}
+
+.mainPageHeader {
+	text-align:center;
+}
+
+.mainPageHeader img#mainBanner {
+	width: 100%;
+}
+
+.mainPageHeader h1 {
+	color: white;
+	height: 60px;
+	text-align: left;
+	padding-top: 10px;
+	padding-left: 70px;
+	margin-left: 30px;
+	background-color: rgb(39, 74, 94);
+}
+
+.mainPageHeader img.schoolLogo {
+	float:left;
+}
+
+div.main-page-button-panel {
+	min-width: 100px;
+	display: inline-block;
+	margin: 10px auto;
+	text-align: center;
+	width: 30%;	
+}
+
+#newsletter_canvas {
+	text-transform: none;
+	font-size: 1.5em;
+	text-shadow: none;
+	background-image:url('../images/news_background.jpg');
+	border-radius: 20px;
+	padding: 30px;
+	border: 2px black solid;
+	box-shadow: 10px 10px 5px 5px gray;
+}
+
+@media screen and (min-width: 750px) {
+	
+	div#newsletter_canvas {
+		width: 600px;
+		margin: 20px auto;
+		display: block;
+		text-align: justify;
+	}
+}
+
+#RRRImages {
+	text-align: center;
+}
+
+#RRRImages img {
+	width: 30%;
+}
+
+#RRRText {
+	text-shadow: none;
+	margin-bottom: 3em;
+}
+
+#RRRText h1 {
+	text-align: center;
+}
+
+#RRRText p {
+	width: 70%;
+	margin: auto;
+	text-align:justify;
+}
+
+#calendar_canvas {
+	text-transform: none;
+	text-shadow: none;
+}
+
+#termDatesPage {
+    background-color:#F4F4F4;
+    background-image: none;
+}
+
+#termDatesPage table p {
+	font-size: 1.25em;	
+	margin: 0em 0em 0.5em 0em;
+}
+
+#termDatesPage table p.eventName {
+	font-weight: bold;
+}
+
+#termDatesPage table p.eventDescription {
+	font-size: 0.75em;
+}
+
+#generalContactDetails {
+	text-shadow: none;
+}
+
+#generalContactDetails p {
+	font-size: 1.1em;
+	margin: 0.25em 1em 0.25em 1em;
+}

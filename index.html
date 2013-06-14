@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+    
+-->
+<html manifest="manifest.appcache">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <link rel="apple-touch-startup-image" href="splashscreen.png">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        
+        <title>Rossett School</title>
+        
+        <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+        <link rel="stylesheet" href="css/index.css" />
+        <link href='css/fullcalendar.css' rel='stylesheet' />
+        
+      	<script src="js/jquery-1.10.1.min.js"></script>
+		<script src="js/jquery.mobile-1.3.1.min.js"></script>
+		<script src="js/mustache.js"></script>
+		<script src='js/fullcalendar.js'></script>
+		<script src='js/gcal.js'></script>
+		
+		<script src="js/datastore.js"></script>
+		<script src="js/index.js"></script>
+			
+    </head>
+    <body>
+        <div id="homePage" data-role="page" class="gradient-background">
+            <div data-role="header">
+            	<h1>Rossett School</h1>
+            	<a href="#cacheClearDialog" data-rel="dialog" data-transition="pop" data-icon="gear" class="ui-btn-right">Cache</a>
+            </div>
+            <div data-role="content">
+            <div class="mainPageHeader">
+				<img id="mainBanner" src="http://smartfuse.s3.amazonaws.com/rossettschool.realsmartcloud.com/uploads/school-images/banner2.jpg" alt="Rossett School" title="Rossett School">
+	            <img class="schoolLogo" src="images/Rossett Badge.png" alt="Rossett School Badge"><h1>Welcome to the Rossett School App</h1>
+            </div>
+            
+		    <div class="main-page-button-panel">                      
+				<a href="#newsletterPage" class="mainMenuButton">
+					<img alt="News Icon" src="images/news-icon.png">
+					<p>News</p>
+				</a>
+			</div>
+		
+			<div class="main-page-button-panel">
+				<a href="#calendarPage" class="mainMenuButton">
+					<img alt="Calendar Icon" src="images/Calendar-icon.png">
+					<p>Calendar</p>
+				</a>
+			</div>
+		          
+			<div class="main-page-button-panel">
+					<a href="#contactPage" class="mainMenuButton">
+					<img alt="Contacts Icon" src="images/Phone-icon.png">
+					<p>Contacts</p>
+				</a>
+			</div>
+			
+		    <div class="main-page-button-panel">                      
+				<a href="#3RsPage" class="mainMenuButton">
+					<img alt="3Rs Icon" src="images/3R-icon.png">
+					<p>3Rs</p>
+				</a>
+			</div>
+
+			<div class="main-page-button-panel">		          
+				<a data-rel="external" target="_blank" href='http://maps.apple.com/?q=53.975424,-1.551733' data-transition="slide" class="mainMenuButton">
+					<img alt="Map Icon" src="images/Map-icon.png">
+					<p>Find Us</p>
+				</a>
+			</div>
+	
+			<div class="main-page-button-panel">
+				<a href="#socialPage" class="mainMenuButton">
+					<img alt="Twitter Icon" src="images/twitter-bird-light-bgs.png">
+					<p>Twitter</p>
+				</a>
+			</div>			
+          </div>
+        </div>
+
+        <div data-role="page" id="3RsPage">
+        	<div data-role="header">
+        		<a data-role="button" href="#homePage" class="ui-btn-left">Home</a>
+        		<h1>3Rs</h1>
+        	</div>
+        	<div data-role=content>
+        		<div id="RRRText">
+	        		<h1>The 3Rs Culture of Learning</h1>
+					<p>As a school we work together to help ensure that everyone develops the skills to enable them to enjoy and participate
+					in their learning, deal with challenges that come their way and be successful. By focussing on the key skills of Responsibility,
+					Resilience and Reflectiveness we anticipate our students will be able to make the most of their  time at Rossett and leave us
+					well equipped to take the next steps in life.</p>
+				</div>
+				<div id="RRRImages">
+					<img src="images/responsible.jpg" alt="Responsible">
+					<img src="images/resilient.jpg"	alt="Resilient">
+					<img src="images/reflective.jpg" alt="Reflective">
+				</div>
+				
+        	</div>
+        </div>
+                
+        <div data-role="page" id="newsletterPage">
+        	<div data-role="header">
+        		<a data-role="button" href="#homePage" class="ui-btn-left">Home</a>
+        		<a data-role="button" data-rel="external" target="_black" href="http://www.rossettschool.co.uk/news.htm">Older News</a>
+        		<h1>School News Letter</h1>
+        	</div>
+        	<div data-role=content>
+        		<div id="newsletter_canvas"></div>
+        	</div>
+        </div>
+
+        <div data-role="page" id="messagesPage">
+        	<div data-role="header">
+        		<a data-role="button" href="#homePage" class="ui-btn-left">Home</a>
+        		<a data-role="button" id="messagesReadButton" data-icon="check">Mark as Read</a>
+        		<h1>School Messages</h1>
+        	</div>
+        	<div data-role=content><div id="message_canvas"></div></div>
+        </div>
+        
+        <div data-role="page" id="cacheClearDialog" data-close-btn="none">
+        	<div data-role="header"><h1>Confirm Cache Clear</h1></div>
+        	<div data-role="content" align="center">
+        		<p>Are you sure you want to clear all cached data?</p>
+        		<a href="#" id="cacheClearButton" data-inline="true" data-role="button" data-theme="c" data-rel="back">Yes</a>
+        		<a href="#" data-inline="true" data-role="button" data-theme="c" data-rel="back">No</a>
+        	</div>
+        </div>
+        
+        <div id="socialPage" data-role="page">
+        	<div data-role="header">
+        		<a data-role="button" href="#homePage" class="ui-btn-left">Home</a>
+        		<h1>Rossett on Twitter</h1>
+        	</div>
+        	<div data-role="content">
+        		<div id="twitterLinksPanel">
+        		</div>
+        	</div>
+        </div>
+        
+        <div id=calendarPage data-role="page">
+        	<div data-role="panel" id="calendarFeedPanel" data-display="overlay">
+        	</div>
+        	<div data-role="header">
+        		<a data-role="button" href="#homePage" class="ui-btn-left">Home</a>
+        		<a data-role="button" href="#calendarFeedPanel" data-icon="gear">Options</a>
+        		<h1>School Calendar</h1>
+        	</div>
+        	<div data-role="content">
+        	<div data-role="popup" id="calendarEventDialog" >
+	        	<div data-role="header" class="ui-content"></div>
+	        	<div data-role="content">
+	        		<div id="calendarEventDetails"></div>
+	        		<a href="#" data-role="button" data-theme="c" data-rel="back">Close</a>
+	        	</div>
+	        </div> 
+	       		<div id="calendar_canvas">
+				</div>
+        	</div>
+        	<div data-role="footer" data-id="calendar-footer" data-position="fixed">		
+				<div data-role="navbar">
+					<ul>
+						<li><a class="ui-btn-active ui-state-persist" href="#">Calendar</a></li>
+						<li><a href="#termDatesPage">Term Dates</a></li>
+					</ul>
+				</div>
+			</div>
+        </div>
+        
+        <div id="termDatesPage" data-role="page" style="background-color: rgb(244,244,244); background-image='';">
+        	<div data-role="header">
+        		<a data-role="button" href="#homePage" class="ui-btn-left">Home</a>
+        		<h1>School Calendar</h1>
+        	</div>
+        	<div data-role="content">
+        		<div id="termdates_canvas"></div>
+        	</div>
+        	<div data-role="footer" data-id="calendar-footer" data-position="fixed">		
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#calendarPage">Calendar</a></li>
+						<li><a class="ui-btn-active ui-state-persist" href="#termDatesPage">Term Dates</a></li>
+					</ul>
+				</div>
+			</div>
+        </div>
+
+        
+        <div id="contactPage" data-role="page">
+        	<div data-theme="a" data-role="header">
+          		<a data-role="button" href="#homePage" class="ui-btn-left">Home</a>
+          		<h1>Contact Details</h1>
+        	</div>
+        	<div data-role="content">
+	        	<div id="generalContactDetails"></div>
+	        	<div id="groupContactDetails" data-role="collapsible-set"></div>
+	        	<div id="otherContactDetails"></div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			app.initialize();
+			datastore.initialise();
+		</script>	
+    </body>
+</html>

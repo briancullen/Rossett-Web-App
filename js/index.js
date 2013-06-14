@@ -1,21 +1,3 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 
 var app = {
 	
@@ -33,38 +15,15 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady, false);
         
         window.applicationCache.addEventListener ('updateready', function (e) {
-        	window.applicationCache.swapCache();
-			if (confirm("This WebApp has updated - reload now?"))
-			{
-				window.location.reload();
+        	if(window.applicationCache.status === window.applicationCache.UPDATEREADY)
+        	{
+				if (confirm("This WebApp has updated - reload now?"))
+				{
+					window.location.reload();
+				}
 			}
         });
-        
-        $('#socialPage').on("pageshow", function () {
-        	var data = datastore.getTwitterDetails();
-
-    		var currentTimeStamp = $('#twitterLinksPanel').data("timeStamp");
-    		if ((currentTimeStamp === undefined) || (currentTimeStamp != data.timeOfCache))
-    		{
-    		
-    			// onclick="window.open(\'https://twitter.com/intent/user?screen_name={{school.twitterId}}\', \'_blank\', \'location=yes\');">{{school.displayName}}</a>\
-    			// onclick="window.open(\'https://twitter.com/intent/user?screen_name={{twitterId}}\', \'_blank\', \'location=yes\');"
-	        	$('#twitterLinksPanel').empty();
-	        	$('#twitterLinksPanel').data("timeStamp", data.timeOfCache);
-	        	$('#twitterLinksPanel').append(Mustache.render('\
-	        			<a data-role="button" href="twitter://user?screen_name={{school.twitterId}}" target="_blank">{{school.displayName}}</a>\
-	        			{{#groups}}\
-	        				<ul data-role="listview" data-inset="true">\
-	        				<li data-role="list-divider">{{groupName}}</li>\
-	        					{{#members}}\
-	        					<li>\
-	        						<a href="twitter://user?screen_name={{twitterId}}" target="_blank">{{displayName}}</a>\
-	        					</li>\
-	        					{{/members}}\
-	        			{{/groups}}</ul>', data)).trigger("create");
-    		}
-    	});
-    	
+            	
         $('#newsletterPage').on("pageinit", function() {
         	$('#newsletter_canvas').load("newsletter.html");
         });
@@ -76,25 +35,12 @@ var app = {
         		datastore.clearAllStorage();
         	});
         	       	
-        });
-        
-        $('#homePage').on("pageshow", function() {
-        	var newMessages = datastore.getNewMessages().length;
-        	if (newMessages > 0)
-        	{
-        		$('#messagesPageLink').append('<span class="ui-li-count">' + newMessages + '</span>');
-        	}
-        	else {
-        		$('#messagesPageLink span').remove();
-        	}
-        	$('#mainNavigationList').listview('refresh');        	
-        });
-        
+        });        
   
         $('#calendarPage').on("pageshow", function (event, ui) {
         	if (!navigator.onLine) {
 	       		alert("You cannot open the calendar as you are currently offline");
-	        	$.mobile.changePage('#homePage', { transition: "slide", role: "page" });
+	        	$.mobile.changePage('#termDatesPage', { transition: "slide", role: "page" });
 	        	return;
 	        }
         	
@@ -289,53 +235,6 @@ var app = {
     		}
 	
     	});
-    	   
-	    $('#messagesPage').on("pageinit", function () {
-	    	$('#messagesReadButton').on("vclick", function() {
-	    		datastore.markMessagesAsRead();
-	    		$('#message_canvas article.newMessage').removeClass('newMessage');
-	    	});
-	    });
-	    
-	    $('#messagesPage').on("pageshow", function () {
-        	var data = datastore.getMessages();     	
-    		var currentTimeStamp = $('#message_canvas').data("timeStamp");
-    		
-    		if ((currentTimeStamp === undefined) || (currentTimeStamp != data.timeOfCache))
-    		{
-    			$('#message_canvas').empty();
-    			$('#message_canvas').data("timeStamp", data.timeOfCache);
-    			var newMessagesLimit = datastore.getNewMessages().length;
-    			
-    			data = data.messages;
-    			for (var index = 0; index < data.length; index++)
-    			{
-    				var messageDate = new Date(data[index].date);
-    				var newHtml = '<div id="tiltshadows"><article';
-    				
-    				if (index < newMessagesLimit)
-    				{
-    					newHtml += ' class="newMessage"';
-    				}
-    				
-    				newHtml += '>\<h2>' + data[index].subject + '</h2>\
-    							<h3>' + data[index].author + ' (<small>' + data[index].email + '</small>) on '
-    							+  messageDate.getDate() + '/' + messageDate.getMonth() + '/' + messageDate.getFullYear() + '</h3>\
-    							<p>' + data[index].content + '</p>';
-    				
-    				if ((data[index].url != null) && (data[index].url.length > 0))
-    				{
-    					newHtml += '<a data-role="button" href="' + data[index].url
-    						+ '" target="_blank">More information...</a>';
-    				}
-    				
-    				newHtml += '</article>	</div>';
-    				$('#message_canvas').append(newHtml);
-    				$('#message_canvas a[data-role=button]').button();
-    			}
-    		
-    		}
-	    });
     },
     // deviceready Event Handler
     //

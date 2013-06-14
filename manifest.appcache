@@ -1,9 +1,7 @@
 CACHE MANIFEST
-#Version 93
+#Version 3
 
 CACHE:
-
-NETWORK:
 css/fullcalendar.css
 css/index.css
 css/jquery.mobile-1.3.1.min.css
@@ -13,6 +11,21 @@ css/images/icons-18-black.png
 css/images/icons-36-white.png
 css/images/icons-36-black.png
 css/images/spacer.gif
+css/add2home.css
+
+images/3R-icon.png
+images/banner2.jpg
+images/Calendar-icon.png
+images/home_icon.png
+images/Map-icon.png
+images/news_background.jpg
+images/news-icon.png
+images/Phone-icon.png
+images/reflective.jpg
+images/resilient.jpg
+images/responsible.jpg
+images/Rossett%20Badge.png
+images/twitter-bird-light-bgs.png
 
 js/datastore.js
 js/fullcalendar.js
@@ -21,13 +34,15 @@ js/index.js
 js/jquery.mobile-1.3.1.min.js
 js/jquery-1.10.1.min.js
 js/mustache.js
+js/add2home.js
 
 index.html
+nonews.html
 
 apple-touch-icon.png
-splashscreen.png
 
-
+NETWORK:
 *
 
 FALLBACK:
+newsletter.html nonews.html

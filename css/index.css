@@ -160,6 +160,13 @@ a.mainMenuButton p {
 	background-color: rgb(39, 74, 94);
 }
 
+@media screen and (max-width: 500px) {
+	.mainPageHeader h1 {
+		font-size: 1.25em;
+		margin-bottom: 2em;
+	}
+}
+
 .mainPageHeader img.schoolLogo {
 	float:left;
 }

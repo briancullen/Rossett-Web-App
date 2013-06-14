@@ -12,3 +12,5 @@ vti_cacheddtm:TX|14 Jun 2013 20:45:32 -0000
 vti_filesize:IR|15388
 vti_syncwith_custweb04.vws.ifl.net\:21:TW|14 Jun 2013 20:45:32 -0000
 vti_syncofs_custweb04.vws.ifl.net\:21:TW|14 Jun 2013 15:54:06 -0000
+vti_syncofs_ftp.mrcullen.net\:21/public_html/rossett:TW|14 Jun 2013 21:16:54 -0000
+vti_syncwith_ftp.mrcullen.net\:21/public_html/rossett:TX|14 Jun 2013 20:45:32 -0000

@@ -179,6 +179,11 @@ div.main-page-button-panel {
 	width: 30%;	
 }
 
+@media screen and (max-width: 599px) {
+	div.main-page-button-panel {
+		width: 47%;
+	}
+}
 #newsletter_canvas {
 	text-transform: none;
 	font-size: 1.5em;

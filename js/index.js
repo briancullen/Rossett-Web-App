@@ -35,7 +35,9 @@ var app = {
         		datastore.clearAllStorage();
         	});
         	       	
-        });        
+        });
+        
+		$('#twitterPage').one('pageshow', getTweets());
   
         $('#calendarPage').on("pageshow", function (event, ui) {
         	if (!navigator.onLine) {

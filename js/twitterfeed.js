@@ -11,8 +11,9 @@ function getTweets() {
  
     var headerHTML = '';
     var loadingHTML = '';
-    headerHTML += '<a href="https://twitter.com/" ><img src="images/twitter-bird-light-bgs.png" width="34" style="float:left;padding:3px 12px 0px 6px" alt="twitter bird" /></a>';
-    headerHTML += '<h1>'+screenname+' <span style="font-size:13px"><a href="https://twitter.com/'+twitterprofile+'" >@'+twitterprofile+'</a></span></h1>';
+    headerHTML += '<a href="https://twitter.com/" ><img src="images/twitter-bird-light-bgs.png" width="34" style="float:right;padding:3px 12px 0px 6px" alt="twitter bird" /></a>';
+    headerHTML += '<a href="https://twitter.com/" ><img src="http://a0.twimg.com/profile_images/429312350/logo_normal.png" width="42" style="float:left;padding:12px 12px 0px 6px" alt="twitter bird" /></a>';
+    headerHTML += '<h1>'+screenname+'<br/><span style="font-size:13px"><a href="https://twitter.com/'+twitterprofile+'" >@'+twitterprofile+'</a></span></h1>';
     loadingHTML += '<div id="loading-container"><img src="css/images/ajax-loader.gif" width="32" height="32" alt="tweet loader" /></div>';
  
     $('#twitter-feed').html(headerHTML + loadingHTML);
@@ -38,6 +39,8 @@ function getTweets() {
                    tweetusername = feeds[i].retweeted_status.user.screen_name;
                    tweetid = feeds[i].retweeted_status.id_str
                    isaretweet = true;
+                   
+                   status = feeds[i].retweeted_status.text;
                  };
  
                  //Check to see if the tweet is a direct message

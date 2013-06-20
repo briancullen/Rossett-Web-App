@@ -31,6 +31,7 @@ function getTweets() {
                 var isaretweet = false;
                 var isdirect = false;
                 var tweetid = feeds[i].id_str;
+                var entities = feeds[i].entities;
  
                 //If the tweet has been retweeted, get the profile pic of the tweeter
                 if(typeof feeds[i].retweeted_status != 'undefined'){
@@ -41,6 +42,7 @@ function getTweets() {
                    isaretweet = true;
                    
                    status = feeds[i].retweeted_status.text;
+                   entities = feeds[i].retweeted_status.entities;
                  };
  
                  //Check to see if the tweet is a direct message
@@ -53,7 +55,7 @@ function getTweets() {
                  if (((showretweets == true) || ((isaretweet == false) && (showretweets == false))) && ((showdirecttweets == true) || ((showdirecttweets == false) && (isdirect == false)))) {
                     if ((feeds[i].text.length > 1) && (displayCounter <= displayLimit)) {
                         if (showtweetlinks == true) {
-                            status = addlinks(status);
+                            status = processEntities(status, entities);
                         }
  
                         if (displayCounter == 1) {
@@ -62,7 +64,27 @@ function getTweets() {
  
                         feedHTML += '<div class="twitter-article">';
                         feedHTML += '<div class="twitter-pic"><a data-rel="external" target="_blank" href="https://twitter.com/'+tweetusername+'" ><img src="'+profileimage+'"images/twitter-feed-icon.png" width="42" height="42" alt="twitter icon" /></a></div>';
-                        feedHTML += '<div class="twitter-text"><p><span class="tweetprofilelink"><strong><a data-rel="external" target="_blank" href="https://twitter.com/'+tweetusername+'" >'+tweetscreenname+'</a></strong> <a data-rel="external" target="_blank" href="https://twitter.com/'+tweetusername+'" >@'+tweetusername+'</a></span><span class="tweet-time"><a data-rel="external" target="_blank" href="https://twitter.com/'+tweetusername+'/status/'+tweetid+'">'+relative_time(feeds[i].created_at)+'</a></span><br/>'+status+'</p></div>';
+                        feedHTML += '<div class="twitter-text"><p><span class="tweetprofilelink"><strong><a data-rel="external" target="_blank" href="https://twitter.com/'+tweetusername+'" >'+tweetscreenname+'</a></strong> <a data-rel="external" target="_blank" href="https://twitter.com/'+tweetusername+'" >@'+tweetusername+'</a></span><span class="tweet-time"><a data-rel="external" target="_blank" href="https://twitter.com/'+tweetusername+'/status/'+tweetid+'">'+relative_time(feeds[i].created_at)+'</a></span><br/>'+status+'</p>';
+
+						if (isaretweet)
+						{
+							feedHTML += '<div class="retweetedBy"><p>Retweeted by <a data-rel="external" target="_blank" href="https://twitter.com/' + feeds[i].user.screen_name
+											+ '">' + feeds[i].user.name + '</a></p></div>';
+						}
+
+						feedHTML += '</div>';
+						if (entities.media != null)
+						{                        
+	                        for (var index = 0; index < entities.media.length; index++)
+	                        {
+	                        	if (entities.media[index].type != "photo")
+	                        		continue;
+	                        	
+	                        	var media = entities.media[index];
+	                        	feedHTML += '<div class="tweetImage"><img src="' + media.media_url + ':small"></div>';
+	                        }
+	                    }
+                        
                         feedHTML += '</div>';
                         displayCounter++;
                     }
@@ -73,18 +95,113 @@ function getTweets() {
     });
 }
  
-//Function modified from Stack Overflow
-function addlinks(data) {
-    //Add link to all http:// links within tweets
-    data = data.replace(/((https?|s?ftp|ssh)\:\/\/[^"\s\<\>]*[^.,;'">\:\s\<\>\)\]\!])/g, function(url) {
-        return '<a data-rel="external" target="_blank" href="'+url+'" >'+url+'</a>';
-    });
 
-    //Add link to @usernames used within tweets
-    data = data.replace(/\B@([_a-z0-9]+)/ig, function(reply) {
-        return '<a data-rel="external" target="_blank" href="http://twitter.com/'+reply.substring(1)+'" style="font-weight:lighter;" >'+reply.charAt(0)+reply.substring(1)+'</a>';
-    });
-    return data;
+function processEntities(twitterText, entities) {
+	if (entities == null)
+		return twitterText;
+	
+	var originalText = twitterText;
+	if ((entities.hashtags != null) && (entities.hashtags.length > 0))
+	{
+		for (var index = 0; index < entities.hashtags.length; index++)
+		{
+			var hashtag = entities.hashtags[index];
+			var length = (hashtag.indices[1] - hashtag.indices[0]);
+			
+			var startIndex = -1;
+			if (hashtag.indices[1] == originalText.length)
+			{
+				startIndex = twitterText.length-length;
+			}
+			else {
+				startIndex = twitterText.indexOf(originalText.slice(hashtag.indices[0], hashtag.indices[1]) + ' ');
+			}
+			
+			var endIndex = startIndex + length;
+			
+			twitterText = twitterText.slice(0, startIndex) + '<a data-rel="external" target="_blank" href="https://twitter.com/search?q=%23' + hashtag.text + '&src=hash">#'
+						+ hashtag.text + '</a>' + twitterText.slice(endIndex);
+		}
+	}
+	
+	if ((entities.user_mentions != null) && (entities.user_mentions.length > 0))
+	{
+		for (var index = 0; index < entities.user_mentions.length; index++)
+		{
+			var mention = entities.user_mentions[index];
+			var length = (mention.indices[1] - mention.indices[0]);
+			
+			var startIndex = -1;
+			if (mention.indices[1] == originalText.length)
+			{
+				startIndex = twitterText.length-length;
+			}
+			else {
+				startIndex = twitterText.indexOf(originalText.slice(mention.indices[0], mention.indices[1]) + ' ');
+			}
+
+			var endIndex = startIndex + length;
+			
+			twitterText = twitterText.slice(0, startIndex) + '<a data-rel="external" target="_blank" href="https://twitter.com/' + mention.screen_name + '">@'
+						+ mention.screen_name + '</a>' + twitterText.slice(endIndex);
+
+		}
+	}
+
+	if ((entities.urls != null) && (entities.urls.length > 0))
+	{
+		for (var index = 0; index < entities.urls.length; index++)
+		{
+			var url = entities.urls[index];
+			var length = (url.indices[1] - url.indices[0]);
+			
+			var startIndex = -1;
+			if (url.indices[1] == originalText.length)
+			{
+				startIndex = twitterText.length-length;
+			}
+			else {
+				startIndex = twitterText.indexOf(url.url + ' ');
+			}
+			
+			var endIndex = startIndex + length;
+			
+			var display_url = url.display_url;
+			if (display_url == null)
+				display_url = url.url;
+			
+			twitterText = twitterText.slice(0, startIndex) + '<a data-rel="external" target="_blank" href="' + url.url + '">'
+						+ display_url + '</a>' + twitterText.slice(endIndex);
+		}
+	}
+	
+	if ((entities.media != null) && (entities.media.length > 0))
+	{
+		for (var index = 0; index < entities.media.length; index++)
+		{
+			var media = entities.media[index];
+			if (media.type != "photo")
+				continue;
+
+			var length = (media.indices[1] - media.indices[0]);
+			
+			var startIndex = -1;
+			if (media.indices[1] == originalText.length)
+			{
+				startIndex = twitterText.length-length;
+			}
+			else {
+				startIndex = twitterText.indexOf(media.url + ' ');
+			}
+			
+			var endIndex = startIndex + length;
+	
+			twitterText = twitterText.slice(0, startIndex) + '<a data-rel="external" target="_blank" href="' + media.url + '">'
+						+ media.display_url + '</a>' + twitterText.slice(endIndex);	
+		}
+	}
+
+	return twitterText;
 }
 
 function relative_time(time_value) {

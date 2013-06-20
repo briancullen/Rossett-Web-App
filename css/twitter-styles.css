@@ -28,6 +28,39 @@
     float:left;
     padding:8px 0px 8px 0px;
 }
+
+.tweetImage {
+	clear: both;
+	display: block;
+	margin: auto;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	text-align: center;
+}
+
+.tweetImage img {
+	border: 1px lightgray solid;
+	border-radius: 10px;	
+}
+
+.retweetedBy {
+	color: rgb(112, 112, 112);
+	font-size: 0.75em;
+	margin-left: 4px;
+}
+
+.retweetedBy a:link {
+	color: rgb(112, 112, 112);
+}
+
+.retweetedBy a:visited {
+	color: rgb(112, 112, 112);
+}
+
+.retweetedBy a:hover {
+	color: rgb(112, 112, 112);
+}
+
 #loading-container {
     padding:16px 0px 16px 0px;
     text-align:center;
@@ -42,6 +75,7 @@
     border:none;
  
 }
+
  img  {
      border:none;
  }
@@ -96,5 +130,9 @@
 	
 	.twitter-text {
 	    width:175px;
+	}
+	
+	.tweetImage {
+		display: none;
 	}
 }

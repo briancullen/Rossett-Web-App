@@ -18,7 +18,7 @@ function getTweets() {
  
     $('#twitter-feed').html(headerHTML + loadingHTML);
  
-    $.getJSON('twitter_test.json',
+    $.getJSON('/twitter/?name=Rossett&num=10&f=1',
         function(feeds) {
             //alert(feeds);
             var feedHTML = '';
@@ -109,7 +109,7 @@ function processEntities(twitterText, entities) {
 			var length = (hashtag.indices[1] - hashtag.indices[0]);
 			
 			var startIndex = -1;
-			if (hashtag.indices[1] == originalText.length)
+			if (hashtag.indices[1] >= originalText.length)
 			{
 				startIndex = twitterText.length-length;
 			}
@@ -132,7 +132,7 @@ function processEntities(twitterText, entities) {
 			var length = (mention.indices[1] - mention.indices[0]);
 			
 			var startIndex = -1;
-			if (mention.indices[1] == originalText.length)
+			if (mention.indices[1] >= originalText.length)
 			{
 				startIndex = twitterText.length-length;
 			}
@@ -156,7 +156,7 @@ function processEntities(twitterText, entities) {
 			var length = (url.indices[1] - url.indices[0]);
 			
 			var startIndex = -1;
-			if (url.indices[1] == originalText.length)
+			if (url.indices[1] >= originalText.length)
 			{
 				startIndex = twitterText.length-length;
 			}
@@ -186,7 +186,7 @@ function processEntities(twitterText, entities) {
 			var length = (media.indices[1] - media.indices[0]);
 			
 			var startIndex = -1;
-			if (media.indices[1] == originalText.length)
+			if (media.indices[1] >= originalText.length)
 			{
 				startIndex = twitterText.length-length;
 			}

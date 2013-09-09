@@ -1,87 +1,92 @@
 [
 	{
-		"date": "3/9/2012",
+		"date": "2/9/2013",
 		"event": "Training Day",
 		"description": "School closed to pupils"
 	},
 	{
-		"date": "4/09/2012",
+		"date": "3/9/2013",
+		"event": "Introduction Day",
+		"description": "Year 7 and 12 attend school"
+	},
+	{
+		"date": "4/09/2013",
 		"event": "First Day of Autumn Term",
 		"description": "School reopens to all pupils"
 	},
 	{
-		"date": "12/10/2012",
-		"event": "Training Day",
-		"description": "School closed to pupils"
-	},
-	{
-		"date": "26/10/2012",
+		"date": "26/10/2013",
 		"event": "Last Day of Half Term",
 		"description": "Start of half term break"
 	},
 	{
-		"date": "5/11/2012",
+		"date": "4/11/2013",
 		"event": "School Reopens",
 		"description": "End of half term break"
 	},
 	{
-		"date": "30/11/2012",
+		"date": "29/11/2013",
 		"event": "Training Day",
 		"description": "School closed to pupils"
 	},
 	{
-		"date": "21/12/2012",
+		"date": "20/12/2013",
 		"event": "Last Day of Autumn Term",
 		"description": "Start of Christmas Holidays"
 	},
 	{
-		"date": "16/1/2013",
+		"date": "6/1/2014",
 		"event": "School Reopens",
 		"description": "First Day of Spring Term"
 	},
 	{
-		"date": "15/2/2013",
+		"date": "14/2/2014",
 		"event": "Last Day of Half Term",
 		"description": "Start of half term break"
 	},
 	{
-		"date": "25/2/2013",
+		"date": "25/2/2014",
 		"event": "School Reopens",
 		"description": "End of half term break"
 	},
 	{
-		"date": "28/3/2013",
+		"date": "4/4/2014",
 		"event": "Last Day of Spring Term",
 		"description": "Start of Easter Break"
 	},
 	{
-		"date": "15/4/2013",
+		"date": "22/4/2014",
 		"event": "School Reopens",
 		"description": "First Day of Summer Term"
 	},
 	{
-		"date": "6/5/2013",
+		"date": "5/5/2014",
 		"event": "Bank Holiday",
-		"description": "School closed"
+		"description": "School closed to all pupils"
 	},
 	{
-		"date": "24/5/2013",
+		"date": "23/5/2014",
 		"event": "Last Day of Half Term",
 		"description": "Start of half term break"
 	},
 	{
-		"date": "3/6/2013",
+		"date": "3/6/2014",
 		"event": "School Reopens",
 		"description": "End of half term break"
 	},	
 	{
-		"date": "22/07/2013",
+		"date": "27/06/2014",
 		"event": "Training Day",
 		"description": "School closed to pupils"
 	},
 	{
-		"date": "23/07/2013",
+		"date": "21/07/2014",
 		"event": "Training Day",
 		"description": "School closed to pupils"
-	}	
+	},
+	{
+		"date": "22/07/2014",
+		"event": "Training Day and last day of Term",
+		"description": "School closed to pupils. Start of Summer Holidays"
+	}
 ]

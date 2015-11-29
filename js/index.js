@@ -25,7 +25,13 @@ var app = {
         });
             	
         $('#newsletterPage').on("pageinit", function() {
-        	$('#newsletter_canvas').load("newsletter.html");
+        	// $('#newsletter_canvas').load("newsletter.html");
+        	$('#newsletter_canvas').load("/category/news/news-update/ div.post:first", function ()
+        	{
+	        	$('#newsletter_canvas h2 a').contents().unwrap();
+	        	$('#newsletter_canvas a').attr("data-rel", "external");
+	        	$('#newsletter_canvas a').attr("target","_blank");
+	        });
         });
 
 
